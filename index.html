@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<!-- HTML file to execute the Trivia game. 
+     NAME: index.html
+     AUTHOR: Elaina Swann
+     DATE: 12/21/2017
+     REVISION LOG:
+        1.0  12/21/2017 - Baseline version.
+-->
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description" content="Trivia Game" />
+  <meta name="keywords" content="Trivia, Game" />
+  <meta name="author" content="Elaina Swann" />
+
+  <title>Trivia Game</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Link to selected google fonts. -->
+  <link href="https://fonts.googleapis.com/css?family=Orbitron|Oswald" rel="stylesheet">
+
+  <!-- Link to customized stylesheet for Trivia game. -->
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+
+</head>
+
+<body>
+  <div id="background">
+    <img src="assets/images/background.jpg" class="img-responsive stretch" alt="Dog Trivia Background image" /> 
+  </div>
+
+  <div class="container">
+
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="text-center" id="title">TRIVIA HAS GONE TO THE DOGS!!!</h1>
+        </div>
+      </div> <!-- trivia title row -->
+
+      <div class="container" id="start-container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-default btn-lg start" id="start-btn"><h2>START</h2></button>
+          </div>
+        </div> <!-- start button row -->
+      </div> <!-- start container -->
+
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="text-center" id="time-remain"></h2>
+        </div>
+      </div> <!-- time remaining row -->
+
+      <div class="container" id="question-container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="text-center" id="question"></h2>
+          </div>
+        </div> <!-- question row -->
+
+        <div class="row">
+          <div class="col-md-12 text-center choice">
+            <button type="button" class="btn btn-default btn-lg" id="choice-0"></button>
+          </div>
+        </div> <!-- choice 0 row -->
+
+        <div class="row">
+          <div class="col-md-12 text-center choice">
+            <button type="button" class="btn btn-default btn-lg" id="choice-1"></button>
+          </div>
+        </div> <!-- choice 1 row -->
+
+        <div class="row">
+          <div class="col-md-12 text-center choice">
+            <button type="button" class="btn btn-default btn-lg" id="choice-2"></button>
+          </div>
+        </div> <!-- choice 2 row -->
+
+        <div class="row">
+          <div class="col-md-12 text-center choice">
+            <button type="button" class="btn btn-default btn-lg" id="choice-3"></button>
+          </div>
+        </div> <!-- choice 3 row -->
+      </div> <!-- question container -->
+
+      <div class="container" id="answer-container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <div id="answer-text">
+            </div>
+          </div>
+        </div> <!-- answer text row -->
+
+        <div class="row">
+          <div class="col-md-12">
+            <div id="answer-img">
+            </div>
+          </div>
+        </div> <!-- answer image row -->
+      </div> <!-- answer container -->
+
+      <div class="container" id="result-container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="text-center" id="comment"></h2>
+          </div>
+        </div> <!-- comment row -->
+
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="text-center" id="correct"></h2>
+          </div>
+        </div> <!-- correct row -->
+
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="text-center" id="incorrect"></h2>
+          </div>
+        </div> <!-- incorrect row -->
+
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="text-center" id="unanswered"></h2>
+          </div>
+        </div> <!-- unanswered row -->
+
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-default btn-lg start" id="restart-btn"><h2>START OVER?</h2></button>
+          </div>
+        </div> <!-- restart button row -->
+
+      </div> <!-- result container -->
+
+    </div> <!-- jumbotron -->
+
+  </div> <!-- main container -->
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script 
+    src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+  </script>
+
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <!-- Latest compiled and minified JavaScript -->
+  <script 
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+  </script>
+
+  <!-- Custom JavaScript code to implement Star Wars game -->
+  <script 
+    type="application/javascript" src="assets/javascript/Questions.js">
+  </script>
+
+  <script 
+    type="application/javascript" src="assets/javascript/app.js">
+  </script>
+
+</body>
+
+</html>
