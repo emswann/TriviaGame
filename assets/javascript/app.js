@@ -71,7 +71,7 @@ $(document).ready(function(){
 
     // !! try using a map here.
     for (let i = 0; i < objQuestion.choices.length; i++) {
-      $("#choice-" + i).html("<h2>" + objQuestion.choices[i] + "</h2>");
+      $("#choice-" + i).text(objQuestion.choices[i]);
     }
   }
 
