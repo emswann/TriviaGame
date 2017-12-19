@@ -9,11 +9,14 @@ $(document).ready(function(){
       intervalID,
       timeoutID;
 
+  var audioInit = new Audio("assets/sound/WhoLetTheDogsOut.mp3");
+
   (function initialize() {
     $("#start-btn").show();
     $("#time-remain, #question-container, #answer-container, #result-container").hide();
 
-    // play audio.
+    audioInit.play();
+    audioInit.loop = true;
   })();
 
   function startTimer() {
@@ -69,7 +72,6 @@ $(document).ready(function(){
 
     $("#question").text(objQuestion.question);
 
-    // !! try using a map here.
     for (let i = 0; i < objQuestion.choices.length; i++) {
       $("#choice-" + i).text(objQuestion.choices[i]);
     }
@@ -82,22 +84,26 @@ $(document).ready(function(){
     $("#answer-container").show();
 
     var strText = "";
+    var strID   = "no";
     if (typeof(objQuestion) === "undefined") {
       objQuestion = arrQuestions[nQuestion]; /* Need to assign to current question for proper rendering. */
 
-      strText = "Out of Time!<br>Correct answer was: " + 
+      strText = "Out of Time!<br><br>Correct answer was:&nbsp&nbsp&nbsp" + 
                 objQuestion.choices[objQuestion.answer];
     }
+    else if (objQuestion.isCorrect) {
+      strText = "Correct!";
+      strID = "yes";
+    }
     else {
-      strText = (objQuestion.isCorrect) ? 
-                  "Correct!" :
-                  "Nope!<br>Correct answer was: " + 
-                  objQuestion.choices[objQuestion.answer];
+      strText = "Nope!<br><br>Correct answer was:&nbsp&nbsp&nbsp" + 
+                objQuestion.choices[objQuestion.answer]; 
     }
 
-    $("#answer-text").html("<h3>" + strText + "</h3>");
+    $("#answer-text").html("<h2 id='" + strID + "'" + ">" + strText + "</h2>");
 
     var imgDiv = $("<img>").addClass("img-responsive center-block")
+                           .attr("id", "gif")
                            .attr("src", PATH + objQuestion.image)
                            .attr("alt", "Image for Answer");
     $("#answer-img").html(imgDiv);
@@ -122,6 +128,8 @@ $(document).ready(function(){
   }
 
   function clickStart() {
+    audioInit.pause();
+    
     $("#start-btn, #answer-container, #result-container").hide();
     $("#time-remain").show();
 

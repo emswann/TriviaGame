@@ -1,3 +1,8 @@
+body {
+  color: #000000;
+  font-family: 'Lato', sans-serif;
+}
+
 #background {
   background-repeat: repeat;
   height: 100%;
@@ -14,17 +19,29 @@
 }
 
 .jumbotron {
+  background-image: url("../images/old_map.png");
   min-height: 100vh;
   margin: 0;
 }
 
+#title {
+  color: #0015FF;
+  font-family: 'Bungee', cursive;
+}
+
 .btn-lg {
-  font-size: 2.5rem;
+  background: #ffffff;
+  border: solid .2rem #0015ff;
+  font-size: 3rem;
   white-space: normal;
   word-wrap: break-word;
 }
 
-#start-btn { 
+.btn-lg:hover {
+  background: #00c946; 
+}
+
+#start-btn, #restart-btn { 
   margin-top: 25%;
   width: 50%;
 }
@@ -34,6 +51,26 @@
   width: 60%;
 }
 
-#restart-btn {
-  width: 60%;
+#no, #yes {
+  font-family: 'Bungee', cursive;
+  font-weight: bold;
+}
+
+#correct, #incorrect, #unanswered {
+  font-family: 'Bungee', cursive;
+  margin-top: 5%;
+}
+
+#yes, #correct {
+  color: #00c946;
+}
+
+#no, #incorrect {
+  color: #ff0900;
+}
+
+#gif {
+  height: 30rem;
+  margin-top: 5%;
+  width: 40rem;
 }
