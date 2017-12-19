@@ -22,6 +22,7 @@ body {
   background-image: url("../images/old_map.png");
   min-height: 100vh;
   margin: 0;
+  position: relative;
 }
 
 #title {
@@ -73,4 +74,15 @@ body {
   height: 30rem;
   margin-top: 5%;
   width: 40rem;
+}
+
+#progress-container {
+  bottom: 5%;
+  left: 0;
+  position: absolute;
+}
+
+.progress {
+  height: 10%;
+  width: 60%
 }

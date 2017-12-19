@@ -13,7 +13,7 @@ $(document).ready(function(){
 
   (function initialize() {
     $("#start-btn").show();
-    $("#time-remain, #question-container, #answer-container, #result-container").hide();
+    $("#time-remain, #question-container, #answer-container, #result-container, #progress-container").hide();
 
     audioInit.play();
     audioInit.loop = true;
@@ -62,6 +62,14 @@ $(document).ready(function(){
     }
   }
 
+  function renderProgress() {
+    var nProgress = (nQuestion + 1) * 10;
+
+    $(".progress-bar").attr("aria-valuenow", nProgress)
+                      .attr("style", "width:" + nProgress + "%")
+                      .text(nProgress + "%");
+  }
+
   function renderQuestion() {
     $("#question-container").show();
     $("#answer-container").hide();
@@ -81,7 +89,9 @@ $(document).ready(function(){
     const PATH = "assets/images/"; // Needs the backslash at the end.
 
     $("#question-container").hide();
-    $("#answer-container").show();
+    $("#answer-container, #progress-container").show();
+
+    renderProgress();
 
     var strText = "";
     var strID   = "no";
@@ -116,7 +126,7 @@ $(document).ready(function(){
   function renderResults() {
     var results = [];
 
-    $("#time-remain, #answer-container").hide();
+    $("#time-remain, #answer-container, #progress-container").hide();
     $("#result-container").show();
 
     results = processResults();
@@ -129,7 +139,7 @@ $(document).ready(function(){
 
   function clickStart() {
     audioInit.pause();
-    
+
     $("#start-btn, #answer-container, #result-container").hide();
     $("#time-remain").show();
 
