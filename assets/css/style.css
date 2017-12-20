@@ -113,4 +113,5 @@ body {
 */
 html.can-touch .btn-lg:hover {
   background: #ffffff; /* disable hover effect on touch devices */
+  border: solid .25rem #0015ff;
 }
