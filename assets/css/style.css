@@ -107,3 +107,10 @@ body {
   font-size: 1.5rem;
   justify-content: center;
 }
+
+/*
+  This code addresses the problem of the sticky hover on a touch screen device. The code was copied from the following website: http://www.javascriptkit.com/dhtmltutors/sticky-hover-issue-solutions.shtml
+*/
+html.can-touch .btn-lg:hover {
+  background: #ffffff; /* disable hover effect on touch devices */
+}

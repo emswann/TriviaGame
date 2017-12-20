@@ -225,4 +225,11 @@ $(document).ready(function(){
    * @param {function} clickAnswer
   */
   $(".choice").on("click", clickAnswer);
-});
+
+  /*
+    This code addresses the problem of the sticky hover on a touch screen device. The code was copied from the following website: http://www.javascriptkit.com/dhtmltutors/sticky-hover-issue-solutions.shtml
+  */
+  document.addEventListener('touchstart', function addtouchclass(e) {
+    document.documentElement.classList.add('can-touch')
+    document.removeEventListener('touchstart', addtouchclass, false)
+  }, false)});
