@@ -6,7 +6,7 @@
 
 /** 
  * @constructor Questions
- * @returns {object} Questions array containing Question objects.
+ * @returns {array} Questions array containing Question objects.
 */
 function Questions() {
 

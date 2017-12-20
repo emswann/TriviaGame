@@ -53,7 +53,7 @@ $(document).ready(function(){
   /** 
    * @function processResults 
    * @description Calculates and returns result totals regarding answers to questions.
-   * @returns {Array} Result totals in the following order: correct, incorrect, unanswered.
+   * @returns {array} Result totals in the following order: correct, incorrect, unanswered.
   */
   function processResults() {
     var nCorrect    = 0,
