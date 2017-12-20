@@ -203,7 +203,7 @@ $(document).ready(function(){
   function clickAnswer() {
     stopTimer();
 
-    var strChosen = $(this).children("button").attr("id"),
+    var strChosen = $(this).attr("id"),
         objQuestion = arrQuestions[nQuestion];
 
     objQuestion.isCorrect = (parseInt(strChosen.charAt(strChosen.length-1)) === 
