@@ -1,14 +1,14 @@
 /**
- * @file Defines Questions object for executing trivia game.
+ * @file Defines Questions object for executing Trivia game.
  * @author Elaina Swann
  * @version 1.0 
  */
 
 /** 
  * @constructor Questions
- * @constructs {object} Contains a Questions array containing Question objects.
+ * @returns {object} Questions array containing Question objects.
 */
-function Questions(strFileName) {
+function Questions() {
 
   /** 
    * @constructor Question 
@@ -32,7 +32,7 @@ function Questions(strFileName) {
 
     for (let i = 0; i < lines.length; i++) {
       var fields = lines[i].split("^");
-      var objQuestion = new Question();
+      var objQuestion = new Question(); /* Create empty object then assign. */
 
       /* First field is the question. last field is the image and next to last is the answer. Get those first. Then, process remaining fields as 1..n choices. */
       objQuestion.question = fields.shift();

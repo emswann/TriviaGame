@@ -1,7 +1,13 @@
+/**
+ * @file Main file for executing Trivia game.
+ * @author Elaina Swann
+ * @version 1.0 
+ */
+
 $(document).ready(function(){
-  const MAXQTIME = 30,
-        INTERVAL = 1000,
-        TIMEOUT  = 5000;
+  const MAXQTIME = 30,   /* Time given for answering question. */
+        INTERVAL = 1000, /* Count down time interval. */
+        TIMEOUT  = 5000; /* Time to display answer to question. */
 
   var arrQuestions = new Questions(),
       nQuestion    = 0,
@@ -11,6 +17,10 @@ $(document).ready(function(){
 
   var audioInit = new Audio("assets/sound/WhoLetTheDogsOut.mp3");
 
+  /** 
+   * @function initialize 
+   * @description Immediately invoked function which initializes game after document is loaded.
+  */
   (function initialize() {
     $("#start-btn").show();
     $("#time-remain, #question-container, #answer-container, #result-container, #progress-container").hide();
@@ -19,6 +29,10 @@ $(document).ready(function(){
     audioInit.loop = true;
   })();
 
+  /** 
+   * @function startTimer 
+   * @description Starts timer associated with counting length of time to answer a question.
+  */
   function startTimer() {
     nTimeRemain = MAXQTIME + 1; /* Due to decrementing before displaying */
 
@@ -27,11 +41,20 @@ $(document).ready(function(){
     intervalID = setInterval(renderTime, INTERVAL);
   }
 
+  /** 
+   * @function stopTimer 
+   * @description Stops timer associated with counting length of time to answer a question.
+  */
   function stopTimer() {
     clearInterval(intervalID);
     intervalID = undefined;
   }
 
+  /** 
+   * @function processResults 
+   * @description Calculates and returns result totals regarding answers to questions.
+   * @returns {Array} Result totals in the following order: correct, incorrect, unanswered.
+  */
   function processResults() {
     var nCorrect    = 0,
         nIncorrect  = 0,
@@ -53,6 +76,10 @@ $(document).ready(function(){
             nUnanswered];
   }
 
+  /** 
+   * @function renderTime 
+   * @description Renders time container.
+  */
   function renderTime() {
     $("#time-remain").text("Time Remaining: " + --nTimeRemain + " Seconds");
 
@@ -62,6 +89,10 @@ $(document).ready(function(){
     }
   }
 
+  /** 
+   * @function renderProgress 
+   * @description Renders progress bar container.
+  */
   function renderProgress() {
     var nProgress = (nQuestion + 1) * 10;
 
@@ -70,6 +101,10 @@ $(document).ready(function(){
                       .text(nProgress + "%");
   }
 
+  /** 
+   * @function renderQuestion 
+   * @description Renders question container.
+  */
   function renderQuestion() {
     $("#question-container").show();
     $("#answer-container").hide();
@@ -85,6 +120,11 @@ $(document).ready(function(){
     }
   }
 
+  /** 
+   * @function renderAnswer 
+   * @description Renders answer container.
+   * @param {Question} objQuestion - Question object for currently answered question.
+  */
   function renderAnswer(objQuestion) {
     const PATH = "assets/images/"; // Needs the backslash at the end.
 
@@ -123,6 +163,10 @@ $(document).ready(function(){
                 setTimeout(renderQuestion, TIMEOUT);
   }
 
+  /** 
+   * @function renderResults 
+   * @description Renders results container.
+  */
   function renderResults() {
     var results = [];
 
@@ -137,6 +181,10 @@ $(document).ready(function(){
     $("#unanswered").text("Unanswered: " + results[2]);    
   }
 
+  /** 
+   * @function clickStart 
+   * @description Performs required processing when start or restart button is chosen.
+  */
   function clickStart() {
     audioInit.pause();
 
@@ -148,6 +196,10 @@ $(document).ready(function(){
     renderQuestion();
   }
 
+  /** 
+   * @function clickAnswer 
+   * @description Performs required processing when answer is chosen.
+  */
   function clickAnswer() {
     stopTimer();
 
@@ -160,6 +212,17 @@ $(document).ready(function(){
     renderAnswer(objQuestion);
   }
 
+  /** 
+   * @event .on ("click") 
+   * @listens .start When start or restart button is chosen. 
+   * @param {function} clickStart
+  */
   $(".start").on("click", clickStart);
+
+  /** 
+   * @event .on ("click") 
+   * @listens .choice When answer for a question is chosen. 
+   * @param {function} clickAnswer
+  */
   $(".choice").on("click", clickAnswer);
 });
