@@ -98,7 +98,7 @@ $(document).ready(function(){
     if (typeof(objQuestion) === "undefined") {
       objQuestion = arrQuestions[nQuestion]; /* Need to assign to current question for proper rendering. */
 
-      strText = "Out of Time!<br><br>Correct answer was:&nbsp&nbsp&nbsp" + 
+      strText = "Out of Time!<br><br>Correct answer was:&nbsp&nbsp" + 
                 objQuestion.choices[objQuestion.answer];
     }
     else if (objQuestion.isCorrect) {
@@ -106,7 +106,7 @@ $(document).ready(function(){
       strID = "yes";
     }
     else {
-      strText = "Nope!<br><br>Correct answer was:&nbsp&nbsp&nbsp" + 
+      strText = "Nope!<br><br>Correct answer was:&nbsp&nbsp" + 
                 objQuestion.choices[objQuestion.answer]; 
     }
 
