@@ -1,2 +1,2 @@
 # TriviaGame
-Trivia Game Timed Questions - Advanced Assignment
+Trivia Game Timed Questions
