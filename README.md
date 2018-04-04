@@ -1,4 +1,5 @@
 # TriviaGame
+
 Trivia Game using JavaScript for logic, jQuery to manipulate HTML, and timers to add excitement for answering questions.
 
 Trivia Game asks the user 10 questions. The user has 30 seconds to answer each question. The correct answer is given after each guess, along with an associated gif. The results are tallied after all 10 questions are guessed and reported to the user.
